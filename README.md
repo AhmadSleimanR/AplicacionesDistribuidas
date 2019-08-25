@@ -1,2 +1,4 @@
 # AplicacionesDistribuidas
-Course project for Desarrollo de aplicaciones Distribuidas at UPC
+Course project for Desarrollo de aplicaciones Distribuidas at UPC<br> 
+### Integrantes:<br> 
+##### Ahmad Sleiman Romero
