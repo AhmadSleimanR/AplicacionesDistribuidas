@@ -13,11 +13,11 @@ namespace ClienteService
         [OperationContract]
         String Insert(Cliente cliente);
         [OperationContract]
-        String Update(Cliente cliente);
+        string Update(Cliente cliente);
         [OperationContract]
-        Cliente FindCliente(int cliente_id);
+        Cliente FindCliente(int clientes_id);
         [OperationContract]
-        String Delete(int cliente_id);
+        String Delete(int clientes_id);
     }
 
     [DataContract]

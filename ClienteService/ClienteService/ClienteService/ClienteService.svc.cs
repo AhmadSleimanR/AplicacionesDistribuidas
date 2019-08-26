@@ -75,12 +75,64 @@ namespace ClienteService
 
         public string Update(Cliente cliente)
         {
-            throw new NotImplementedException();
+            string msg;
+            try
+            {
+                SqlConnection con = new SqlConnection("Server=.;Database=RestauranteBD;User Id=sa;Password = 12345;");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Update CLIENTES set username = @Username, userpass = @Userpass, nombre = @nombre, apellidos = @apellidos, "+
+                        "email=@email,direccion=@direccion,dni=@dni where clientes_id=@Clientes_id", con);
+                cmd.Parameters.AddWithValue("@Clientes_id", cliente.Clientes_id);
+                cmd.Parameters.AddWithValue("@Username", cliente.Username);
+                cmd.Parameters.AddWithValue("@Userpass", cliente.Userpass);
+                cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
+                cmd.Parameters.AddWithValue("@Apellidos", cliente.Apellidos);
+                cmd.Parameters.AddWithValue("@Email", cliente.Email);
+                cmd.Parameters.AddWithValue("@Direccion", cliente.Direccion);
+                cmd.Parameters.AddWithValue("@Dni", cliente.Dni);
+                int operation = cmd.ExecuteNonQuery();
+                con.Close();
+                if (operation == 1)
+                {
+                    msg = "Operacion realizada con exito!";
+                }
+                else
+                {
+                    msg = "La operacion no se pudo realizar.";
+                }
+                return msg;
+                }
+           catch (Exception e)
+           {
+               Console.WriteLine("Error: " + e);
+               return "Error" + e;
+           }
         }
 
-        public string Delete(int cliente_id)
+        public string Delete(int clientes_id)
         {
-            throw new NotImplementedException();
+            String msg;
+            try {
+                SqlConnection con = new SqlConnection("Server=.;Database=RestauranteBD;User Id=sa;Password = 12345;");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("DELETE from where clientes_id=@Clientes_id", con);
+                cmd.Parameters.AddWithValue("@Clientes_id", clientes_id);
+                int operation = cmd.ExecuteNonQuery();
+                con.Close();
+                if (operation == 1)
+                {
+                    msg = "Operacion realizada con exito!";
+                }
+                else
+                {
+                    msg = "La operacion no se pudo realizar.";
+                }
+                return msg;
+            }catch(Exception e)
+            {
+                Console.WriteLine("Error: " + e);
+                return null;
+            }
         }
     }
 }

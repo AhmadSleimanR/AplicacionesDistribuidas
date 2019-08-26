@@ -1,0 +1,7 @@
+C:\AplicacionesDistribuidas\ClienteService\ClienteService\ClienteTest\bin\Debug\ClienteTest.dll.config
+C:\AplicacionesDistribuidas\ClienteService\ClienteService\ClienteTest\bin\Debug\ClienteTest.dll
+C:\AplicacionesDistribuidas\ClienteService\ClienteService\ClienteTest\bin\Debug\ClienteTest.pdb
+C:\AplicacionesDistribuidas\ClienteService\ClienteService\ClienteTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\AplicacionesDistribuidas\ClienteService\ClienteService\ClienteTest\obj\Debug\ClienteTest.csprojResolveAssemblyReference.cache
+C:\AplicacionesDistribuidas\ClienteService\ClienteService\ClienteTest\obj\Debug\ClienteTest.dll
+C:\AplicacionesDistribuidas\ClienteService\ClienteService\ClienteTest\obj\Debug\ClienteTest.pdb
