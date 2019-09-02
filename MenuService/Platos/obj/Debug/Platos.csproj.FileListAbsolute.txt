@@ -1,0 +1,6 @@
+C:\Users\Anibal MA\source\repos\WCF_DSD\Platos\bin\Platos.dll.config
+C:\Users\Anibal MA\source\repos\WCF_DSD\Platos\bin\Platos.dll
+C:\Users\Anibal MA\source\repos\WCF_DSD\Platos\bin\Platos.pdb
+C:\Users\Anibal MA\source\repos\WCF_DSD\Platos\obj\Debug\Platos.csproj.CoreCompileInputs.cache
+C:\Users\Anibal MA\source\repos\WCF_DSD\Platos\obj\Debug\Platos.dll
+C:\Users\Anibal MA\source\repos\WCF_DSD\Platos\obj\Debug\Platos.pdb
