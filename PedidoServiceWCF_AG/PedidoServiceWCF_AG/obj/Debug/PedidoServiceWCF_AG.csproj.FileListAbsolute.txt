@@ -1,0 +1,7 @@
+C:\Users\ANGEL\source\repos\PedidoServiceWCF_AG\PedidoServiceWCF_AG\bin\PedidoServiceWCF_AG.dll.config
+C:\Users\ANGEL\source\repos\PedidoServiceWCF_AG\PedidoServiceWCF_AG\bin\PedidoServiceWCF_AG.dll
+C:\Users\ANGEL\source\repos\PedidoServiceWCF_AG\PedidoServiceWCF_AG\bin\PedidoServiceWCF_AG.pdb
+C:\Users\ANGEL\source\repos\PedidoServiceWCF_AG\PedidoServiceWCF_AG\obj\Debug\PedidoServiceWCF_AG.csproj.CoreCompileInputs.cache
+C:\Users\ANGEL\source\repos\PedidoServiceWCF_AG\PedidoServiceWCF_AG\obj\Debug\PedidoServiceWCF_AG.dll
+C:\Users\ANGEL\source\repos\PedidoServiceWCF_AG\PedidoServiceWCF_AG\obj\Debug\PedidoServiceWCF_AG.pdb
+C:\Users\ANGEL\source\repos\PedidoServiceWCF_AG\PedidoServiceWCF_AG\obj\Debug\PedidoServiceWCF_AG.csprojAssemblyReference.cache
