@@ -15,9 +15,12 @@ namespace ClienteService
         [OperationContract]
         string Update(Cliente cliente);
         [OperationContract]
-        Cliente FindCliente(int clientes_id);
+        Cliente FindCliente(int dni);
         [OperationContract]
-        String Delete(int clientes_id);
+        String Delete(int dni);
+
+        [OperationContract]
+      List<Cliente> ListarClientes();
     }
 
     [DataContract]
