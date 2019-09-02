@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a12d881a-cdb3-49d0-8740-5b09bcc28da8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:6018/Platos.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Platos.wsdl" MetadataType="Wsdl" ID="5bf34e57-29fc-4aeb-aac5-a7b23ba2e05f" SourceId="1" SourceUrl="http://localhost:6018/Platos.svc?wsdl" />
+    <MetadataFile FileName="Platos.disco" MetadataType="Disco" ID="3e5b39b9-55ba-45f3-a420-9777a5537188" SourceId="1" SourceUrl="http://localhost:6018/Platos.svc?disco" />
+    <MetadataFile FileName="Platos.xsd" MetadataType="Schema" ID="c8487ed1-1ddb-418d-a59a-45f98e9faeec" SourceId="1" SourceUrl="http://localhost:6018/Platos.svc?xsd=xsd2" />
+    <MetadataFile FileName="Platos1.xsd" MetadataType="Schema" ID="cbd7fc7f-cfe1-4418-8959-d3d2bfe6a99e" SourceId="1" SourceUrl="http://localhost:6018/Platos.svc?xsd=xsd3" />
+    <MetadataFile FileName="Platos2.xsd" MetadataType="Schema" ID="20746000-dbac-4f61-85a6-2fdfedb7d5d2" SourceId="1" SourceUrl="http://localhost:6018/Platos.svc?xsd=xsd0" />
+    <MetadataFile FileName="Platos3.xsd" MetadataType="Schema" ID="b5a5d82b-7ddc-4474-9c6e-1163f4d441f3" SourceId="1" SourceUrl="http://localhost:6018/Platos.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

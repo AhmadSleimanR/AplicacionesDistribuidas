@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Platos.Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Platos.Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Plato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id_plato" type="xs:int" />
+      <xs:element minOccurs="0" name="Precio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Plato" nillable="true" type="tns:Plato" />
+  <xs:complexType name="ArrayOfPlato">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Plato" nillable="true" type="tns:Plato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlato" nillable="true" type="tns:ArrayOfPlato" />
+</xs:schema>

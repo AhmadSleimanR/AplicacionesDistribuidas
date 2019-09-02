@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Platos" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:6018/Platos.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:6018/Platos.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Platos.Errores" />
+      <xsd:import schemaLocation="http://localhost:6018/Platos.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:6018/Platos.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Platos.Dominio" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPlatos_RegistrarPlato_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarPlato" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_RegistrarPlato_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarPlatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_RegistrarPlato_RepetidoExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Platos.Errores" name="detail" element="q1:RepetidoException" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_ModificarPlato_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPlato" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_ModificarPlato_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPlatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_EliminarPlato_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPlato" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_EliminarPlato_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPlatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_ObtenerPlatobyID_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPlatobyID" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_ObtenerPlatobyID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPlatobyIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_ObtenerPlatobyName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPlatobyName" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_ObtenerPlatobyName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPlatobyNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_ObtenerPlatos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPlatos" />
+  </wsdl:message>
+  <wsdl:message name="IPlatos_ObtenerPlatos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPlatosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPlatos">
+    <wsdl:operation name="RegistrarPlato">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlatos/RegistrarPlato" message="tns:IPlatos_RegistrarPlato_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlatos/RegistrarPlatoResponse" message="tns:IPlatos_RegistrarPlato_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IPlatos/RegistrarPlatoRepetidoExceptionFault" name="RepetidoExceptionFault" message="tns:IPlatos_RegistrarPlato_RepetidoExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPlato">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlatos/ModificarPlato" message="tns:IPlatos_ModificarPlato_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlatos/ModificarPlatoResponse" message="tns:IPlatos_ModificarPlato_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPlato">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlatos/EliminarPlato" message="tns:IPlatos_EliminarPlato_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlatos/EliminarPlatoResponse" message="tns:IPlatos_EliminarPlato_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPlatobyID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlatos/ObtenerPlatobyID" message="tns:IPlatos_ObtenerPlatobyID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlatos/ObtenerPlatobyIDResponse" message="tns:IPlatos_ObtenerPlatobyID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPlatobyName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlatos/ObtenerPlatobyName" message="tns:IPlatos_ObtenerPlatobyName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlatos/ObtenerPlatobyNameResponse" message="tns:IPlatos_ObtenerPlatobyName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPlatos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlatos/ObtenerPlatos" message="tns:IPlatos_ObtenerPlatos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlatos/ObtenerPlatosResponse" message="tns:IPlatos_ObtenerPlatos_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPlatos" type="tns:IPlatos">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrarPlato">
+      <soap:operation soapAction="http://tempuri.org/IPlatos/RegistrarPlato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RepetidoExceptionFault">
+        <soap:fault use="literal" name="RepetidoExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPlato">
+      <soap:operation soapAction="http://tempuri.org/IPlatos/ModificarPlato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPlato">
+      <soap:operation soapAction="http://tempuri.org/IPlatos/EliminarPlato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPlatobyID">
+      <soap:operation soapAction="http://tempuri.org/IPlatos/ObtenerPlatobyID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPlatobyName">
+      <soap:operation soapAction="http://tempuri.org/IPlatos/ObtenerPlatobyName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPlatos">
+      <soap:operation soapAction="http://tempuri.org/IPlatos/ObtenerPlatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Platos">
+    <wsdl:port name="BasicHttpBinding_IPlatos" binding="tns:BasicHttpBinding_IPlatos">
+      <soap:address location="http://localhost:6018/Platos.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
