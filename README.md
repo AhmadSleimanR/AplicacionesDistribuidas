@@ -4,3 +4,4 @@ Course project for Desarrollo de aplicaciones Distribuidas at UPC<br>
 ##### Ahmad Sleiman Romero
 ##### Anibal Marlo Aguilar
 ##### José Daniel Zapata Rivera
+##### Yeno Angel Gutierrez Bellido
