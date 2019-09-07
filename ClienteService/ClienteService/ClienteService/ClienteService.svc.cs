@@ -18,10 +18,9 @@ namespace ClienteService
                 String msg;
                 SqlConnection con = new SqlConnection("Server=.;Database=RestauranteBD;User Id=sa;Password = 12345;");
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into CLIENTES(username, userpass, nombre, apellidos, email, direccion, dni)" +
-                    "values(@Username,@Userpass,@Nombre,@Apellidos,@Email,@Direccion,@Dni)", con);
-                cmd.Parameters.AddWithValue("@Username", cliente.Username);
-                cmd.Parameters.AddWithValue("@Userpass", cliente.Userpass);
+                SqlCommand cmd = new SqlCommand("insert into CLIENTES( userpass, nombre, apellidos, email, direccion, dni)" +
+                    "values(@Userpass,@Nombre,@Apellidos,@Email,@Direccion,@Dni)", con);
+                 cmd.Parameters.AddWithValue("@Userpass", cliente.Userpass);
                 cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
                 cmd.Parameters.AddWithValue("@Apellidos", cliente.Apellidos);
                 cmd.Parameters.AddWithValue("@Email", cliente.Email);
@@ -44,20 +43,18 @@ namespace ClienteService
             }
         }
 
-        public Cliente FindCliente(int clientes_id)
+        public Cliente FindCliente(int dni)
         {
             Cliente cliente = new Cliente();
             try
             {
                 SqlConnection con = new SqlConnection("Server=.;Database=RestauranteBD;User Id=sa;Password = 12345;");
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select * from CLIENTES where clientes_id=@Clientes_id", con);
-                cmd.Parameters.AddWithValue("@Clientes_id", clientes_id);
+                SqlCommand cmd = new SqlCommand("select * from CLIENTES where dni=@dni", con);
+                cmd.Parameters.AddWithValue("@dni", dni);
                 SqlDataReader dtr = cmd.ExecuteReader();
                 dtr.Read();
-                cliente.Clientes_id = int.Parse(dtr["clientes_id"].ToString());
-                cliente.Username = dtr["username"].ToString();
-                cliente.Userpass = dtr["userpass"].ToString();
+                 cliente.Userpass = dtr["userpass"].ToString();
                 cliente.Nombre = dtr["nombre"].ToString();
                 cliente.Apellidos = dtr["apellidos"].ToString();
                 cliente.Email = dtr["email"].ToString();
@@ -80,12 +77,9 @@ namespace ClienteService
             {
                 SqlConnection con = new SqlConnection("Server=.;Database=RestauranteBD;User Id=sa;Password = 12345;");
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Update CLIENTES set username = @Username, userpass = @Userpass, nombre = @nombre, apellidos = @apellidos, "+
-                        "email=@email,direccion=@direccion,dni=@dni where clientes_id=@Clientes_id", con);
-                cmd.Parameters.AddWithValue("@Clientes_id", cliente.Clientes_id);
-                cmd.Parameters.AddWithValue("@Username", cliente.Username);
-                cmd.Parameters.AddWithValue("@Userpass", cliente.Userpass);
-                cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
+                SqlCommand cmd = new SqlCommand("Update CLIENTES set   nombre = @nombre, apellidos = @apellidos, "+
+                        "email=@email,direccion=@direccion where dni=@dni ", con);
+                 cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
                 cmd.Parameters.AddWithValue("@Apellidos", cliente.Apellidos);
                 cmd.Parameters.AddWithValue("@Email", cliente.Email);
                 cmd.Parameters.AddWithValue("@Direccion", cliente.Direccion);
@@ -109,14 +103,14 @@ namespace ClienteService
            }
         }
 
-        public string Delete(int clientes_id)
+        public string Delete(int dni)
         {
             String msg;
             try {
                 SqlConnection con = new SqlConnection("Server=.;Database=RestauranteBD;User Id=sa;Password = 12345;");
                 con.Open();
-                SqlCommand cmd = new SqlCommand("DELETE from where clientes_id=@Clientes_id", con);
-                cmd.Parameters.AddWithValue("@Clientes_id", clientes_id);
+                SqlCommand cmd = new SqlCommand("DELETE from CLIENTES where dni=@dni", con);
+                cmd.Parameters.AddWithValue("@dni", dni);
                 int operation = cmd.ExecuteNonQuery();
                 con.Close();
                 if (operation == 1)
@@ -129,6 +123,44 @@ namespace ClienteService
                 }
                 return msg;
             }catch(Exception e)
+            {
+                Console.WriteLine("Error: " + e);
+                return null;
+            }
+        }
+
+        public List<Cliente> ListarClientes() 
+        {
+
+            List<Cliente> Clientes = new List<Cliente>();
+            Cliente cliente = null;
+            try
+            {
+                SqlConnection con = new SqlConnection("Server=.;Database=RestauranteBD;User Id=sa;Password = 12345;");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from CLIENTES  ", con);
+                 SqlDataReader dtr = cmd.ExecuteReader();
+                while (dtr.Read()) {
+                      cliente = new Cliente();
+                    cliente.Userpass = dtr["userpass"].ToString();
+                    cliente.Nombre = dtr["nombre"].ToString();
+                    cliente.Apellidos = dtr["apellidos"].ToString();
+                    cliente.Email = dtr["email"].ToString();
+                    cliente.Direccion = dtr["direccion"].ToString();
+                    cliente.Dni = dtr["dni"].ToString();
+
+                    Clientes.Add(cliente);
+
+                };
+
+
+               
+
+
+                con.Close();
+                return Clientes;
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("Error: " + e);
                 return null;
