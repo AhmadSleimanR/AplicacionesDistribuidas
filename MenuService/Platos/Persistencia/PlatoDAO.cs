@@ -114,14 +114,14 @@ namespace Platos.Persistencia
         }
         public Plato ModificarPlato(Plato plato)
         {
-                string sql = "UPDATE plato set no_plato=@descripcion, mt_precio = @precio, url=@url WHERE nid_plato = @nid_plato";
+                string sql = "UPDATE plato set no_plato=@descripcion, mt_precio = @precio, url_img=@url WHERE nid_plato = @nid_plato";
                 Plato PlatoModificado = null;
                 using (SqlConnection conexionBD = new SqlConnection(CadenaConexionBD))
                 {
                     conexionBD.Open();
                     using (SqlCommand command = new SqlCommand(sql, conexionBD))
                     {
-                        command.Parameters.Add(new SqlParameter("@id_plato", plato.Id_plato));
+                        command.Parameters.Add(new SqlParameter("@nid_plato", plato.Id_plato));
                         command.Parameters.Add(new SqlParameter("@descripcion", plato.Descripcion));
                         command.Parameters.Add(new SqlParameter("@url", plato.Url));
                         command.Parameters.Add(new SqlParameter("@precio", plato.Precio));
@@ -140,7 +140,7 @@ namespace Platos.Persistencia
                 conexionBD.Open();
                 using (SqlCommand command = new SqlCommand(sql, conexionBD))
                 {
-                    command.Parameters.Add(new SqlParameter("@id_plato", id_plato));
+                    command.Parameters.Add(new SqlParameter("@nid_plato", id_plato));
                     command.ExecuteNonQuery();
                 }
             }

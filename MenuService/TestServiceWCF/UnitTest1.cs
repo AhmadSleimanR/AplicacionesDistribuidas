@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.ServiceModel;
+using System.Diagnostics;
+
 namespace TestServiceWCF
 {
     [TestClass]
@@ -9,43 +11,57 @@ namespace TestServiceWCF
         [TestMethod]
         public void TestCrear()
         {
-            PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
+            try
+            {
+                PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
 
-            PlatosServ.Plato plato= platosClient.RegistrarPlato(
-                new PlatosServ.Plato
-                {
-                    Id_plato = 9999,
-                    Descripcion = "Arroz  Chaufa",
-                    Precio = (decimal)17.50,
-                    Url = "https://developersonline2019.net/resources/21.png"
-                }
-            );
+                PlatosServ.Plato plato = platosClient.RegistrarPlato(
+                    new PlatosServ.Plato
+                    {
+                        Descripcion = "Arroz  Chaufa",
+                        Precio = (decimal)17.5,
+                        Url = "https://developersonline2019.net/resources/21.png"
+                    }
+                );
 
-            Assert.AreEqual(9999, plato.Id_plato);
-            Assert.AreEqual("Arroz  Chaufa", plato.Descripcion);
-            Assert.AreEqual(17.50, plato.Precio);
-            Assert.AreEqual("https://developersonline2019.net/resources/21.png", plato.Url);
+                Assert.AreEqual("Arroz  Chaufa", plato.Descripcion);
+                Assert.AreEqual((decimal)17.5, plato.Precio);
+                Assert.AreEqual("https://developersonline2019.net/resources/21.png", plato.Url);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message.ToString());
+            }
+            
 
         }
         [TestMethod]
         public void TestModificar()
         {
-            PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
+            try
+            {
+                PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
 
-            PlatosServ.Plato plato = platosClient.RegistrarPlato(
-                new PlatosServ.Plato
-                {
-                    Id_plato = 9999,
-                    Descripcion = "Arroz Blanco",
-                    Precio = (decimal)17.50,
-                    Url = "https://developersonline2019.net/resources/21.png"
-                }
-            );
+                PlatosServ.Plato plato = platosClient.ModificarPlato(
+                    new PlatosServ.Plato
+                    {
+                        Id_plato = 2015,
+                        Descripcion = "Arroz Chaufa",
+                        Precio = (decimal)20.50,
+                        Url = "https://developersonline2019.net/resources/21.png"
+                    }
+                );
 
-            Assert.AreEqual(9999, plato.Id_plato);
-            Assert.AreEqual("Arroz Blanco", plato.Descripcion);
-            Assert.AreEqual(20.50, plato.Precio);
-            Assert.AreEqual("https://developersonline2019.net/resources/21.png", plato.Url);
+                Assert.AreEqual("Arroz Chaufa", plato.Descripcion);
+                Assert.AreEqual((decimal)20.50, plato.Precio);
+                Assert.AreEqual("https://developersonline2019.net/resources/21.png", plato.Url);
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(ex.Message.ToString());
+            }
+            
 
         }
         [TestMethod]
@@ -65,32 +81,58 @@ namespace TestServiceWCF
             }
             catch (FaultException<PlatosServ.RepetidoException> err)
             {
-                Assert.AreEqual("Error al ingresar el registro", err.Reason.ToString());
+                Assert.AreEqual("Error al registrar", err.Reason.ToString());
                 Assert.AreEqual(err.Detail.codigo, "101");
-                Assert.AreEqual(err.Detail.descripcion, "El plato a registrar, ya existe.");
-                throw;
+                Assert.AreEqual(err.Detail.descripcion, "El plato que desea registrar ya existe");
             }
             
         }
         [TestMethod]
         public void TestEliminarRegistro()
         {
-            PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
+            try
+            {
+                PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
 
-            platosClient.EliminarPlato(9999);
+                platosClient.EliminarPlato(2014);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
         [TestMethod]
         public void TestListar()
         {
-            PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
+            try
+            {
+                PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
 
-            platosClient.ObtenerPlatos();
+                platosClient.ObtenerPlatos();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
         [TestMethod]
         public void TestBusquedaNoEncontrada()
         {
-            PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
-            platosClient.ObtenerPlatobyName("Causa Rellena");
+            try
+            {
+                PlatosServ.PlatosClient platosClient = new PlatosServ.PlatosClient();
+                platosClient.ObtenerPlatobyName("Causa Rellena");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
         
 
