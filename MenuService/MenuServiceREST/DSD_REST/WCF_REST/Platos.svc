@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true"
+    Factory="System.ServiceModel.Activation.WebServiceHostFactory" Service="WCF_REST.Platos" CodeBehind="Platos.svc.cs" %>
