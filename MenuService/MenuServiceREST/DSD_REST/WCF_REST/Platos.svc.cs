@@ -42,7 +42,7 @@ namespace WCF_REST
 
         public Plato RegistrarPlato(Plato platoCrear)
         {
-            if (platoDAO.ObtenerPlatoporNombre(platoCrear.Descripcion) != null)
+            if (platoDAO.ObtenerPlatoporNombre(platoCrear.Nombre) != null)
             {
                 throw new WebFaultException<ManejoException>
                 (

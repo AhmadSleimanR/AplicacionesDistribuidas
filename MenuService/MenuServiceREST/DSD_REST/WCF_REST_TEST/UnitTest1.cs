@@ -17,7 +17,8 @@ namespace WCF_REST_TEST
             JavaScriptSerializer js = new JavaScriptSerializer();
             Plato platoNuevo = new Plato()
             {
-                Descripcion = "Lomo Saltado de Casa",
+                Nombre = "Lomo Saltado",
+                Descripcion = "Food",
                 Precio = (decimal)30.50,
                 Url = "https://developersonline2019.net/resources/21.png"
             };
@@ -41,7 +42,7 @@ namespace WCF_REST_TEST
 
             Plato platoCreado = js.Deserialize<Plato>(resultJSON);
 
-            Assert.AreEqual(platoNuevo.Descripcion, platoCreado.Descripcion);
+            Assert.AreEqual(platoNuevo.Nombre, platoCreado.Nombre);
             Assert.AreEqual(platoNuevo.Precio, platoCreado.Precio);
             Assert.AreEqual(platoNuevo.Url, platoCreado.Url);
         }
@@ -51,7 +52,8 @@ namespace WCF_REST_TEST
             JavaScriptSerializer js = new JavaScriptSerializer();
             Plato platoNuevo = new Plato()
             {
-                Descripcion = "Lomo Saltado",
+                Nombre = "Lomo Saltado",
+                Descripcion = "Plato que debes probar",
                 Precio = (decimal)20.50,
                 Url = "https://developersonline2019.net/resources/21.png"
             };
@@ -79,6 +81,7 @@ namespace WCF_REST_TEST
 
                 Plato platoCreado = js.Deserialize<Plato>(resultJSON);
 
+                Assert.AreEqual(platoNuevo.Nombre, platoCreado.Nombre);
                 Assert.AreEqual(platoNuevo.Descripcion, platoCreado.Descripcion);
                 Assert.AreEqual(platoNuevo.Precio, platoCreado.Precio);
                 Assert.AreEqual(platoNuevo.Url, platoCreado.Url);
@@ -114,7 +117,7 @@ namespace WCF_REST_TEST
 
             Plato platoObtenido = js.Deserialize<Plato>(resultJSON);
 
-            Assert.AreEqual("Arroz Chaufa", platoObtenido.Descripcion);
+            Assert.AreEqual("Arroz Chaufa", platoObtenido.Nombre);
             Assert.AreEqual((decimal)20.5, platoObtenido.Precio);
             Assert.AreEqual("https://developersonline2019.net/resources/21.png", platoObtenido.Url);
 
@@ -127,7 +130,7 @@ namespace WCF_REST_TEST
             Plato platoNuevo = new Plato()
             {
                 Id_plato = 2026,
-                Descripcion = "Lomo Saltado Carta",
+                Nombre = "Lomo Saltado Carta",
                 Precio = (decimal)24.50,
                 Url = "https://developersonline2019.net/resources/21.png"
             };
@@ -151,7 +154,7 @@ namespace WCF_REST_TEST
 
             Plato platoCreado = js.Deserialize<Plato>(resultJSON);
 
-            Assert.AreEqual(platoNuevo.Descripcion, platoCreado.Descripcion);
+            Assert.AreEqual(platoNuevo.Nombre, platoCreado.Nombre);
             Assert.AreEqual(platoNuevo.Precio, platoCreado.Precio);
             Assert.AreEqual(platoNuevo.Url, platoCreado.Url);
         }

@@ -9,8 +9,11 @@ namespace WCF_REST.Dominio
     [DataContract]
     public class Plato
     {
-        [DataMember]
+        [DataMember(IsRequired = false)]
         public int Id_plato { get; set; }
+
+        [DataMember]
+        public string Nombre { get; set; }
 
         [DataMember]
         public string Descripcion { get; set; }
