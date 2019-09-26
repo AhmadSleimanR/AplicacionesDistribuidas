@@ -33,6 +33,7 @@ namespace ClienteService
         string email;
         string direccion;
         string dni;
+        string telefono;
 
         [DataMember]
         public int Clientes_id
@@ -81,6 +82,13 @@ namespace ClienteService
         {
             get { return dni; }
             set { dni = value; }
+        }
+
+        [DataMember]
+        public String Telefono
+        {
+            get { return telefono; }
+            set { telefono = value; }
         }
     }
 

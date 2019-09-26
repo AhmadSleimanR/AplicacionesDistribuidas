@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="content">
         <!-- BEGIN LOGIN FORM -->
         <form class="login-form" action="index.html" method="post">
-            <h3 class="form-title font-green">PIDA SU MENÚ</h3>
+            <h3 class="form-title font-green"><!--PIDA SU MENÚ--></h3>
             <div class="alert alert-danger display-hide">
                 <button class="close" data-close="alert"></button>
                 <span> Enter any username and password. </span>
@@ -135,40 +135,45 @@ License: You must have a valid license purchased only from themeforest(the above
         <form class="register-form" id="frm" name="frm" action="index.html" method="post">
             <h3 class="font-green">Registrate</h3>
             <p class="hint"> Ingreso sus datos personales: </p>
+            
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">DNI</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="DNI" name="dni" id="dni" />
+            </div>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Nombres</label>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Nombres" name="Nombres" />
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Nombres" name="Nombres" id="Nombres"  />
             </div>
 
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Apellidos</label>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Apellidos" name="Apellidos" />
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Apellidos" name="Apellidos" id="Apellidos" />
             </div>
             <div class="form-group">
                 <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                 <label class="control-label visible-ie8 visible-ie9">Email</label>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email" />
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email" id="email" />
             </div>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Direccion</label>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Direccion" name="Direccion" />
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Direccion" name="Direccion" id="Direccion" />
             </div>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Celular</label>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Celular" name="Celular" />
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Celular" name="Celular" id="Celular" />
             </div>
              <p class="hint"> Datos de usuario: </p>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Usuario</label>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Usuario" name="Usuario" />
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Usuario" name="Usuario" id="Usuario" />
             </div>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
-                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Contraseña" name="password" />
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Contraseña" name="password"  />
             </div>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Repita Contraseña</label>
-                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Repita Contraseñ" name="rpassword" />
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Repita Contraseñ" name="rpassword" id="rpassword" />
             </div>
             <div class="form-group margin-top-20 margin-bottom-20">
                 <label class="mt-checkbox mt-checkbox-outline">
@@ -217,21 +222,76 @@ License: You must have a valid license purchased only from themeforest(the above
     <script language="javascript">
     var rutaListado= "@Url.Action("Store", "Registrar")";
   
-    function guardar() {      
-        
+        function   guardar() {      
+              
+      
         var data = {};
-        data['Nombres'] = $("#nombre").val();
-        data['Apellidos'] = $("#apellidos").val();
-        data['email'] = $("#email").val();
-        data['Direccion'] = $("#Direccion").val();
-        data['Celular'] = $("#Celular").val();
-        data['Usuario'] = $("#Usuario").val();
-        data['password'] = $("#password").val();
+        data['Dni'] = $("#dni").val();
+        data['Nombres'] = $("#Nombres").val();
+        data['Apellidos'] = $("#Apellidos").val();
+        data['Email'] = $("#email").val();
+        data['Direccion'] = $("#Direccion").val();  
+        data['Telefono'] = $("#Celular").val();
+        data['UserName'] = $("#Usuario").val();
+        data['UserPass'] = $("#register_password").val();
  
          var url = rutaListado;
         $.post(url, data, function (resp) {
 
-            if (resp.Error) {
+
+            if (eval(resp.Codigo) <1) {
+
+              
+
+                var codigo = prompt("Ingreso codigo", "Verificacion");
+
+                if (codigo != null) {
+                   
+                    var data2 = {};
+                    data2['Dni'] = $("#dni").val();
+                    data2['Codigo'] = codigo;
+                   
+ 
+                    //var url = "http://localhost:2153/Clientes.svc/Verificar";
+
+                    var url = "@Url.Action("Verificar", "Registrar")";
+
+
+                    $.post(url, data2, function (resp) {
+
+                        
+                        if (eval(resp.Codigo) < 1) {
+
+
+                            swal.fire({
+                                "title": "Correcto",
+                                "text": "Se registro correctamente",
+                                "type": "success",
+                                "confirmButtonClass": "btn btn-secondary",
+                            });
+
+                        } else {
+
+                            swal.fire({
+                                "title": "Error " + resp.Codigo,
+                                "text": resp.Descripcion,
+                                "type": "warning",
+                                "confirmButtonClass": "btn btn-secondary",
+                            });
+
+                        }
+
+
+                    });
+
+
+
+                }
+
+
+
+
+            }else{
 
                 swal.fire({
                     "title": "Error "+resp.Codigo,
@@ -239,16 +299,6 @@ License: You must have a valid license purchased only from themeforest(the above
                     "type": "warning",
                     "confirmButtonClass": "btn btn-secondary",
                 });
-
-            }
-            else {
-
-
-
- 
-
-
-
 
             }
         });
