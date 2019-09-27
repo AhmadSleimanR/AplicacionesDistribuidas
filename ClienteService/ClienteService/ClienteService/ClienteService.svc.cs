@@ -18,14 +18,17 @@ namespace ClienteService
                 String msg;
                 SqlConnection con = new SqlConnection("Server=.;Database=RestauranteBD;User Id=sa;Password = 12345;");
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into CLIENTES( userpass, nombre, apellidos, email, direccion, dni)" +
-                    "values(@Userpass,@Nombre,@Apellidos,@Email,@Direccion,@Dni)", con);
-                 cmd.Parameters.AddWithValue("@Userpass", cliente.Userpass);
+                SqlCommand cmd = new SqlCommand("insert into CLIENTES(username, userpass, nombre, apellidos, email, direccion, dni,telefono)" +
+                    "values(@UserName,@Userpass,@Nombre,@Apellidos,@Email,@Direccion,@Dni,@Telefono)", con);
+                cmd.Parameters.AddWithValue("@UserName", cliente.Username );
+                cmd.Parameters.AddWithValue("@Userpass", cliente.Userpass);
                 cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
                 cmd.Parameters.AddWithValue("@Apellidos", cliente.Apellidos);
                 cmd.Parameters.AddWithValue("@Email", cliente.Email);
                 cmd.Parameters.AddWithValue("@Direccion", cliente.Direccion);
                 cmd.Parameters.AddWithValue("@Dni", cliente.Dni);
+                cmd.Parameters.AddWithValue("@Telefono", cliente.Telefono );
+
                 int operation = cmd.ExecuteNonQuery();
                 con.Close();
                 if (operation == 1) {
